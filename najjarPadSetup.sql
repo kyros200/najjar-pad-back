@@ -3,7 +3,7 @@ create database najjarPad;
 CREATE TABLE pad (
     id_pad int primary key auto_increment,
     name varchar(255),
-    markdown varchar(255),
+    markdown varchar(10000),
     id_pad_father int
 );
 

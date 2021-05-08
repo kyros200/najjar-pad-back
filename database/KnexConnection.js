@@ -1,14 +1,13 @@
-const activeDbConfiguration = require('./config');
 const knex = require('knex')
 
 const K = knex({
     client: 'mysql2',
     connection: {
-        host: process.env.MYSQL_HOST,
-        port: process.env.MYSQL_PORT,
-        user: process.env.MYSQL_USER,
-        password: process.env.MYSQL_PASS,
-        database: process.env.MYSQL_BASE
+        host: "wcwimj6zu5aaddlj.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+        port: 3306,
+        user: "ua2607gz3xvcu8jt",
+        password: "lgu8nvi4fxxwxmhq",
+        database: "yevndcb000ki3vvr"
     }
 })
 

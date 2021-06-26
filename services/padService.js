@@ -54,4 +54,30 @@ savePad = async (pad, path) => {
   return id;
 }
 
-module.exports = { getPadByPath, getDirectChildrenOfPad, savePad };
+setNewPassword = async (pad, path) => {
+  const name = path.pop();
+  const pad_father = await getPadByPath(path);
+
+  let id;
+  if(pad.id_pad) {
+    id = await K("pad")
+    .where({id_pad: pad.id_pad})
+    .update({
+      pass: pad.pass === "" ? null : pad.pass, 
+      read_only: pad.read_only,
+    });
+
+    if(id === 1) {
+      id = "update: success"
+    } else {
+      id = "update: failed"
+    }
+
+  } else {
+    id = await K("pad").insert({name: name, markdown: pad.markdown, id_pad_father: pad_father ? pad_father.id_pad : null});
+  }
+
+  return id;
+}
+
+module.exports = { getPadByPath, getDirectChildrenOfPad, savePad, setNewPassword };
